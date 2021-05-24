@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mi Calculadora con Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{message}}</h1>
+      <h2>{{resultado}}</h2>
+      <input type="number" v-model="number1">
+      <input type="number" v-model="number2">
+      <br><br>
+      <button v-on:click="sumarNumeros"> Suma </button>
+      <button v-on:click="restarNumeros"> Resta </button>
+      <button v-on:click="multiplicarNumeros"> Multplicación </button>
+      <button v-on:click="dividirNumeros"> División </button><br><br>
+      <button v-on:click="raizCuadrada"> Raiz cuadrada (sera del primer campo) </button>
+      <button v-on:click="potenciaCuadrada"> Potencia al cuadrado (sera del primer campo) </button><br><br>
+      <button v-on:click="potenciaDinamica"> Potencia dinamica (el primer campo sera el valor y el segundo campo el exponente) </button>
+    </div>
+
+
+  </body>
+</html>
+
+
+<script>
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message : 'Mi Calculadora!',
+    number1 : 0,
+    number2 : 0,
+    resultado : 0
+  },
+  methods:{
+    sumarNumeros: function () {
+      this.resultado = parseInt(this.number1) + parseInt(this.number2)
+    },
+    restarNumeros: function () {
+      this.resultado = parseInt(this.number1) - parseInt(this.number2)
+    },
+    multiplicarNumeros: function () {
+      this.resultado = parseInt(this.number1) * parseInt(this.number2)
+    },
+    dividirNumeros: function () {
+      this.resultado = parseInt(this.number1) / parseInt(this.number2)
+    },
+    raizCuadrada: function () {
+      this.resultado = parseFloat(Math.sqrt(this.number1))
+    },
+    potenciaCuadrada: function () {
+      this.resultado = parseFloat(Math.pow(this.number1,2))
+    },
+    potenciaDinamica: function () {
+      this.resultado = parseFloat(Math.pow(this.number1,this.number2))
+    },
+
+  }
+})
+</script>
+
